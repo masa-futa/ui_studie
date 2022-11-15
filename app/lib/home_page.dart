@@ -153,22 +153,67 @@ class HomePage extends StatelessWidget {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
                 children: [
-                  const Text(
-                    'Trending Podcast',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.more_horiz,
-                      color: Colors.black,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: 130,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.purpleAccent,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            child: const Text(
+                              'Play All Show',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 130,
+                          child: ElevatedButton(
+                            onPressed: () => Navigator.of(context)
+                                .pushNamed('/sub_sucribe_info'),
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.grey.shade400,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            child: const Text(
+                              'Subscribe',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Trending Podcast',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.more_horiz,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -196,49 +241,52 @@ class MusicItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 100,
-          height: 80,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.black12,
-          ),
-        ),
-        const SizedBox(width: 15),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
-              'The Striving',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pushNamed('/music_info'),
+      child: Row(
+        children: [
+          Container(
+            width: 100,
+            height: 80,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.black12,
             ),
-            SizedBox(height: 8),
-            Text(
-              'The Lab Of Honour',
-              style: TextStyle(
-                color: Color(0x80000000),
-                fontSize: 14,
-              ),
-            ),
-          ],
-        ),
-        const Spacer(),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-              shape: const CircleBorder(), primary: Colors.white),
-          child: const Icon(
-            Icons.play_arrow,
-            color: Colors.black,
           ),
-        ),
-      ],
+          const SizedBox(width: 15),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'The Striving',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'The Lab Of Honour',
+                style: TextStyle(
+                  color: Color(0x80000000),
+                  fontSize: 14,
+                ),
+              ),
+            ],
+          ),
+          const Spacer(),
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(), primary: Colors.white),
+            child: const Icon(
+              Icons.play_arrow,
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
